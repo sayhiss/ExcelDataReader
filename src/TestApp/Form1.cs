@@ -348,17 +348,14 @@ namespace TestApp
 
         private void writePython()
         {
-            //string fileName = Path.GetFileName(textBox1.Text);  //aa.txt
-            //string fileExt = Path.GetExtension(textBox1.Text);  //.txt
-            //string folderName = Path.GetFileName(textBox1.Text);  //Temp
+            if (!File.Exists(textBox1.Text))
+            {
+                MessageBox.Show("xlsx文件不存在！");
+                return;
+            }
 
             string fileNameNoExt = Path.GetFileNameWithoutExtension(textBox1.Text);  //aa
             string filePathOnly = Path.GetDirectoryName(textBox1.Text);  //D:\Temp
-            if (!Directory.Exists(filePathOnly))
-            {
-                MessageBox.Show("路径不存在：" + filePathOnly);
-                return;
-            }
             string pythonFilePath = filePathOnly + "\\" + fileNameNoExt + ".py";
             // 使用StreamWriter来写入文件  
             using (StreamWriter sw = new StreamWriter(pythonFilePath, false, Encoding.UTF8))
@@ -403,14 +400,14 @@ namespace TestApp
 
         private void writeJson()
         {
-            string fileNameNoExt = Path.GetFileNameWithoutExtension(textBox1.Text);
-            string filePathOnly = Path.GetDirectoryName(textBox1.Text);
-            if (!Directory.Exists(filePathOnly))
+            if (!File.Exists(textBox1.Text))
             {
-                MessageBox.Show("路径不存在：" + filePathOnly);
+                MessageBox.Show("xlsx文件不存在！");
                 return;
             }
-                string jsonFilePath = filePathOnly + "\\" + fileNameNoExt + ".json";
+            string fileNameNoExt = Path.GetFileNameWithoutExtension(textBox1.Text);
+            string filePathOnly = Path.GetDirectoryName(textBox1.Text);
+            string jsonFilePath = filePathOnly + "\\" + fileNameNoExt + ".json";
             // 使用StreamWriter来写入文件  
             using (StreamWriter sw = new StreamWriter(jsonFilePath, false, Encoding.UTF8))
             {
@@ -573,6 +570,12 @@ namespace TestApp
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(textBox1.Text))
+            {
+                MessageBox.Show("xlsx文件不存在！");
+                return;
+            }
+
             string filePathOnly = Path.GetDirectoryName(textBox1.Text);
             try
             {
