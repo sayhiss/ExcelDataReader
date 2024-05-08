@@ -296,6 +296,12 @@ namespace TestApp
 
         private void loadXlsx()
         {
+            if (!File.Exists(textBox1.Text))
+            {
+                MessageBox.Show("xlsx文件不存在！");
+                return;
+            }
+
             try
             {
                 using var stream = new FileStream(textBox1.Text, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
