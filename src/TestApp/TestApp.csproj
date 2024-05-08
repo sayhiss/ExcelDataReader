@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net462;net8.0-windows</TargetFrameworks>
     <AssemblyName>TestApp</AssemblyName>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <PackageId>TestApp</PackageId>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
