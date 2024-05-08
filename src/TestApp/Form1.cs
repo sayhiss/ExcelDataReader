@@ -47,6 +47,8 @@ namespace TestApp
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -64,7 +66,7 @@ namespace TestApp
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 29);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Select file";
+            this.button1.Text = "选择";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1Click);
             // 
@@ -82,7 +84,7 @@ namespace TestApp
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 40);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Process";
+            this.button2.Text = "载入";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2Click);
             // 
@@ -121,9 +123,9 @@ namespace TestApp
             this.Sheet.AutoSize = true;
             this.Sheet.Location = new System.Drawing.Point(18, 127);
             this.Sheet.Name = "Sheet";
-            this.Sheet.Size = new System.Drawing.Size(116, 18);
+            this.Sheet.Size = new System.Drawing.Size(98, 18);
             this.Sheet.TabIndex = 5;
-            this.Sheet.Text = "Choose sheet";
+            this.Sheet.Text = "选择工作表";
             // 
             // firstRowNamesCheckBox
             // 
@@ -132,9 +134,9 @@ namespace TestApp
             this.firstRowNamesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.firstRowNamesCheckBox.Location = new System.Drawing.Point(22, 42);
             this.firstRowNamesCheckBox.Name = "firstRowNamesCheckBox";
-            this.firstRowNamesCheckBox.Size = new System.Drawing.Size(313, 22);
+            this.firstRowNamesCheckBox.Size = new System.Drawing.Size(160, 22);
             this.firstRowNamesCheckBox.TabIndex = 6;
-            this.firstRowNamesCheckBox.Text = "first row contains column names";
+            this.firstRowNamesCheckBox.Text = "第一行显示列名";
             this.firstRowNamesCheckBox.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
@@ -160,26 +162,50 @@ namespace TestApp
             this.label1.Location = new System.Drawing.Point(18, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 18);
+            this.label1.Size = new System.Drawing.Size(116, 18);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Path";
+            this.label1.Text = "XLSX文件路径";
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(1281, 1193);
+            this.button3.Location = new System.Drawing.Point(1015, 1193);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(241, 40);
             this.button3.TabIndex = 9;
-            this.button3.Text = "generate python script";
+            this.button3.Text = "生成Python";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Location = new System.Drawing.Point(747, 1193);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(241, 40);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "打开文件夹";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(1280, 1193);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(241, 40);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "生成Json";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1537, 1276);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip1);
@@ -216,6 +242,8 @@ namespace TestApp
         private ToolStripStatusLabel toolStripStatusLabel1;
         private Label label1;
         private Button button3;
+        private Button button4;
+        private Button button5;
         private DataSet ds;
 
         public Form1()
@@ -319,10 +347,16 @@ namespace TestApp
 
         private void writePython()
         {
-            // 指定python文件的路径  
-            string pyFilePath = "C:\\Users\\3\\Desktop\\excel\\MaterialLibrary.py";
+            //string fileName = Path.GetFileName(textBox1.Text);  //aa.txt
+            //string fileExt = Path.GetExtension(textBox1.Text);  //.txt
+            //string folderName = Path.GetFileName(textBox1.Text);  //Temp
+
+            string fileNameNoExt = Path.GetFileNameWithoutExtension(textBox1.Text);  //aa
+            string filePathOnly = Path.GetDirectoryName(textBox1.Text);  //D:\Temp
+
+            string pythonFilePath = filePathOnly + "\\" + fileNameNoExt + ".py";
             // 使用StreamWriter来写入文件  
-            using (StreamWriter sw = new StreamWriter(pyFilePath, false, Encoding.UTF8))
+            using (StreamWriter sw = new StreamWriter(pythonFilePath, false, Encoding.UTF8))
             {
                 foreach (DataTable table in ds.Tables)
                 {
@@ -363,10 +397,12 @@ namespace TestApp
 
         private void writeJson()
         {
-            // 指定python文件的路径  
-            string FilePath = "C:\\Users\\3\\Desktop\\excel\\MaterialLibrary.json";
+            string fileNameNoExt = Path.GetFileNameWithoutExtension(textBox1.Text);
+            string filePathOnly = Path.GetDirectoryName(textBox1.Text);
+
+            string jsonFilePath = filePathOnly + "\\" + fileNameNoExt + ".json";
             // 使用StreamWriter来写入文件  
-            using (StreamWriter sw = new StreamWriter(FilePath, false, Encoding.UTF8))
+            using (StreamWriter sw = new StreamWriter(jsonFilePath, false, Encoding.UTF8))
             {
                 foreach (DataTable table in ds.Tables)
                 {
@@ -494,8 +530,6 @@ namespace TestApp
         private void button3_Click(object sender, EventArgs e)
         {
             writePython();
-            //writeJson();
-
 
             // 遍历DataSet中的所有DataTable  
             //foreach (DataTable table in ds.Tables)
@@ -524,6 +558,17 @@ namespace TestApp
             //    // 在每个表后输出一个空行以便于阅读  
             //    Console.WriteLine();
             //}
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string filePathOnly = Path.GetDirectoryName(textBox1.Text);
+            System.Diagnostics.Process.Start(filePathOnly);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            writeJson();
         }
     }
 }
