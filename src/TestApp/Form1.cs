@@ -63,9 +63,9 @@ namespace TestApp
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(587, 8);
+            this.button1.Location = new System.Drawing.Point(587, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 28);
+            this.button1.Size = new System.Drawing.Size(105, 40);
             this.button1.TabIndex = 0;
             this.button1.Text = "选择";
             this.button1.UseVisualStyleBackColor = true;
@@ -77,13 +77,12 @@ namespace TestApp
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(440, 28);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "C:\\Users\\3\\Desktop\\excel\\MaterialLibrary.xlsx";
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(16, 71);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(179, 46);
+            this.button2.Size = new System.Drawing.Size(179, 40);
             this.button2.TabIndex = 2;
             this.button2.Text = "载入";
             this.button2.UseVisualStyleBackColor = true;
