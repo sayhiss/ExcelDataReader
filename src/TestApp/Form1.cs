@@ -62,9 +62,9 @@ namespace TestApp
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(518, 7);
+            this.button1.Location = new System.Drawing.Point(587, 8);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 29);
+            this.button1.Size = new System.Drawing.Size(105, 28);
             this.button1.TabIndex = 0;
             this.button1.Text = "选择";
             this.button1.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@ namespace TestApp
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(69, 8);
+            this.textBox1.Location = new System.Drawing.Point(141, 8);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(440, 28);
             this.textBox1.TabIndex = 1;
@@ -82,7 +82,7 @@ namespace TestApp
             // 
             this.button2.Location = new System.Drawing.Point(16, 71);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 40);
+            this.button2.Size = new System.Drawing.Size(179, 46);
             this.button2.TabIndex = 2;
             this.button2.Text = "载入";
             this.button2.UseVisualStyleBackColor = true;
@@ -217,7 +217,7 @@ namespace TestApp
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "生成材料库";
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
