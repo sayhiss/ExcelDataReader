@@ -3,6 +3,7 @@ using ExcelDataReader;
 using System.Diagnostics;
 using System.Text;
 using System.Xml.Linq;
+using System.IO;
 
 namespace TestApp
 {
@@ -353,7 +354,11 @@ namespace TestApp
 
             string fileNameNoExt = Path.GetFileNameWithoutExtension(textBox1.Text);  //aa
             string filePathOnly = Path.GetDirectoryName(textBox1.Text);  //D:\Temp
-
+            if (!Directory.Exists(filePathOnly))
+            {
+                MessageBox.Show("路径不存在：" + filePathOnly);
+                return;
+            }
             string pythonFilePath = filePathOnly + "\\" + fileNameNoExt + ".py";
             // 使用StreamWriter来写入文件  
             using (StreamWriter sw = new StreamWriter(pythonFilePath, false, Encoding.UTF8))
@@ -393,14 +398,19 @@ namespace TestApp
             }
 
             Console.WriteLine("python文件已成功创建！");
+            MessageBox.Show("python文件已成功创建！");
         }
 
         private void writeJson()
         {
             string fileNameNoExt = Path.GetFileNameWithoutExtension(textBox1.Text);
             string filePathOnly = Path.GetDirectoryName(textBox1.Text);
-
-            string jsonFilePath = filePathOnly + "\\" + fileNameNoExt + ".json";
+            if (!Directory.Exists(filePathOnly))
+            {
+                MessageBox.Show("路径不存在：" + filePathOnly);
+                return;
+            }
+                string jsonFilePath = filePathOnly + "\\" + fileNameNoExt + ".json";
             // 使用StreamWriter来写入文件  
             using (StreamWriter sw = new StreamWriter(jsonFilePath, false, Encoding.UTF8))
             {
@@ -525,6 +535,7 @@ namespace TestApp
                 }
             }
             Console.WriteLine("json文件已成功创建！");
+            MessageBox.Show("json文件已成功创建！");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -563,7 +574,14 @@ namespace TestApp
         private void button4_Click(object sender, EventArgs e)
         {
             string filePathOnly = Path.GetDirectoryName(textBox1.Text);
-            System.Diagnostics.Process.Start(filePathOnly);
+            try
+            {
+                System.Diagnostics.Process.Start(filePathOnly);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("路径不存在："+ filePathOnly);
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
