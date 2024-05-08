@@ -249,7 +249,8 @@ namespace TestApp
         public Form1()
         {
             InitializeComponent();
-            if(textBox1.Text.Length > 0 )
+            textBox1.Text = System.Environment.CurrentDirectory + "\\excel\\MaterialLibrary.xlsx";
+            if (textBox1.Text.Length > 0 )
             {
                 loadXlsx();
             }
@@ -297,7 +298,7 @@ namespace TestApp
         {
             if (!File.Exists(textBox1.Text))
             {
-                MessageBox.Show("xlsx文件不存在！");
+                MessageBox.Show("xlsx文件不存在！文件路径："+ textBox1.Text);
                 return;
             }
 
@@ -355,7 +356,7 @@ namespace TestApp
         {
             if (!File.Exists(textBox1.Text))
             {
-                MessageBox.Show("xlsx文件不存在！");
+                MessageBox.Show("xlsx文件不存在！文件路径：" + textBox1.Text);
                 return;
             }
 
@@ -407,7 +408,7 @@ namespace TestApp
         {
             if (!File.Exists(textBox1.Text))
             {
-                MessageBox.Show("xlsx文件不存在！");
+                MessageBox.Show("xlsx文件不存在！文件路径：" + textBox1.Text);
                 return;
             }
             string fileNameNoExt = Path.GetFileNameWithoutExtension(textBox1.Text);
@@ -577,7 +578,7 @@ namespace TestApp
         {
             if (!File.Exists(textBox1.Text))
             {
-                MessageBox.Show("xlsx文件不存在！");
+                MessageBox.Show("xlsx文件不存在！文件路径：" + textBox1.Text);
                 return;
             }
 
